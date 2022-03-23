@@ -1,0 +1,9 @@
+{
+    "firstName"    : "Sravan",
+    "middleName"   : "Kumar",
+    "lastName"     : "Doddi",
+    "mobileNumber" : 8555936621,
+    "emailAddress" :"abc@gmail.com",
+    "dateOfBirth"  : "18/03/1999",
+    "gender"       : "male" 
+}

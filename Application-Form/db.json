@@ -1,0 +1,34 @@
+{
+  "Posts": [
+    {
+      "firstName": "Narasimha",
+      "middleName": "Rao",
+      "lastName": "Dasari",
+      "mobileNumber": 9988223311,
+      "email": "abc@gmail.com",
+      "dateOfBirth": "1998-11-13",
+      "gender": "Male",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "firstName": "rajini",
+      "middleName": "kanth",
+      "lastName": "Ache",
+      "mobileNumber": 9876543987,
+      "email": "ache@gmail.com",
+      "dateOfBirth": "1998-12-18",
+      "gender": "Male"
+    },
+    {
+      "id": 9,
+      "firstName": "Sravan",
+      "middleName": "kumar",
+      "lastName": "Doddi",
+      "mobileNumber": 919199887689,
+      "email": "Adn@gmail.com",
+      "dateOfBirth": "2022-03-02",
+      "gender": "Male"
+    }
+  ]
+}

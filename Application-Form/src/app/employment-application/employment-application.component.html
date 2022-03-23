@@ -1,0 +1,161 @@
+<p>employment-applicaton works!</p>
+<nav class="navbar">
+    search by name:
+    <input type="text" class="form-control" name="email" formControlName="email" placeholder="enter Email"
+        [(ngModel)]="empModel.email">
+    <!-- [(ngModel)]="empModel.mobileNumber" (ngModelChange)="search()" -->
+</nav>
+
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h5 style="color: aliceblue;">Employment application form</h5>
+        <div class="d-flex">
+            <button (click)="clickAddEmployee()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                class="btn btn-success"> ApplicationForm</button>
+        </div>
+
+    </div>
+</nav>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Employee Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Middle Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Date Of Birth</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of empData">
+            <td>{{row.id}}</td>
+            <td>{{row.firstName}}</td>
+            <td>{{row.middleName}}</td>
+            <td>{{row.lastName}}</td>
+            <td>{{row.mobileNumber}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.dateOfBirth}}</td>
+            <td>{{row.gender}}</td>
+            <td>
+                <button (click)="edit(row)" class="btn btn-info" type="button" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Edit</button>
+                <button (click)="deleteEmployee(row)" class="btn btn-danger mx-2">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="emp">
+                    <h2>Employment application form</h2>
+                    <form [formGroup]="formValue">
+                        <div class="form-group form-check">
+                            <label for="firstName">First Name</label>
+                            <input type="text" formControlName="firstName" class="form-control"
+                                placeholder="Please enter your first Name">
+                            <!-- pattern="[a-zA-Z0-9]" -->
+
+                            <div *ngIf="formValue.controls.firstName.invalid && (formValue.controls.firstName.dirty || formValue.controls.firstName.touched)"
+                                class="error">
+                                <div *ngIf="formValue.controls.firstName.hasError('pattern')" class="text-danger">first
+                                    name contains only alphs numarics
+                                </div>
+                                <div *ngIf="formValue.controls.firstName.hasError('required')" class="text-danger">
+                                    first-name is required
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group form-check">
+                            <label for="middleName">Middle Name</label>
+                            <input type="text" formControlName="middleName" class="form-control"
+                                placeholder="Please enter your middle name">
+                            <!-- pattern="[a-zA-Z0-9]" -->
+
+                            <div *ngIf="formValue.controls.middleName.invalid && (formValue.controls.middleName.dirty || formValue.controls.middleName.touched)"
+                                class="error">
+                                <div *ngIf="formValue.controls.middleName.hasError('pattern')" class="text-danger">
+                                    middle-name contains only alphs numarics
+                                </div>
+                                <div *ngIf="formValue.controls.middleName.hasError('required')" class="text-danger">
+                                    middle-name is required
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group form-check">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" formControlName="lastName" class="form-control"
+                                placeholder="Please enter your last Name" >
+                            <!-- pattern="[a-zA-Z0-9]" -->
+
+                            <div *ngIf="formValue.controls.lastName.invalid && (formValue.controls.lastName.dirty || formValue.controls.lastName.touched)"
+                                class="error">
+                                <div *ngIf="formValue.controls.lastName.hasError('pattern')" class="text-danger">
+                                    last-name contains only alphs numarics
+                                </div>
+                                <div *ngIf="formValue.controls.lastName.hasError('required')" class="text-danger">
+                                    last-name is required
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group form-check">
+                            <label for="number">Mobile Number</label>
+                            <input type="number" formControlName="mobileNumber" class="form-control"
+                                placeholder="Please enter your mobile number" required>
+                            <!-- pattern="[6-9]{1}[0-9]{9}" -->
+                        </div>
+                        <div class="form-group form-check">
+                            <label for="email">Email</label>
+                            <input type="email" formControlName="email" class="form-control"
+                                placeholder="Please Enter your mail">
+                        </div>
+                        <div class="form-group form-check">
+                            <label for="date">Date Of Birth</label>
+                            <input type="date" formControlName="dateOfBirth" class="form-control">
+                            <!-- name="startDate"  value="2022-03-21" min="1982-03-21" max="2022-03-21" -->
+                        </div>
+                        <label>
+                            <input type="radio" value="Male" formControlName="gender">
+                            <span>Male</span>
+                        </label>
+                        <label>
+                            <input type="radio" value="Female" formControlName="gender">
+                            <span>Female</span>
+                        </label>
+                    </form>
+                    <!-- <div>
+                            {{applicationForm.value | json}}
+                        </div> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id='cancel' class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" *ngIf="showAdd" class="btn btn-primary" (click)="postEmployeeDetails()"
+                    [disabled]="formValue.invalid">Submit</button>
+                <button type="button" *ngIf="showUpdate" class="btn btn-primary" (click)="updateEmployeeDetails()"
+                    [disabled]="formValue.invalid">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <button type="button" (click) = "getEmployeeById(mobileNumber)">getEmployeeBYId</button> -->
