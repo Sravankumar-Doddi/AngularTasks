@@ -11,21 +11,10 @@ import { Employee } from '../model/Employee';
 })
 export class EmploymentApplicationComponent implements OnInit {
 
-  //   applicationForm = new FormGroup({
-  //   firstName : new FormControl(''),
-  //   middleName : new FormControl(' '),
-  //   lastName : new FormControl(' '),
-  //   mobileNumber : new FormControl( ),
-  //   emailAddress : new FormControl(' '),
-  //   dateOfBirth : new FormControl(' '),
-  //   gender : new FormControl('')
-  // });
-
   formValue!: FormGroup;
   empModel: Employee = new Employee();
   empData !: Employee[];
   email !: String;
-  // empData !: [];
   mobileNumber !: number;
   showAdd !: boolean;
   showUpdate !: boolean;
@@ -39,7 +28,7 @@ export class EmploymentApplicationComponent implements OnInit {
       middleName: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9]+$")]],
       lastName: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9]+$")]],
       mobileNumber: ['', [Validators.required, Validators.pattern("^(0|91)?[6-9]{1}[0-9]{9}$")]],
-      email: ['', [Validators.email]],
+      email: ['', [Validators.email, Validators.required]],
       dateOfBirth: ['', [Validators.required]],
       gender: ['', [Validators.required]]
     })
@@ -124,12 +113,13 @@ export class EmploymentApplicationComponent implements OnInit {
   }
 
   search() {
-    if (this.email == '' || this.mobileNumber == 0) {
+    if (this.email == '') {
       this.ngOnInit()
     }
+    // || this.mobileNumber == 0
     // else if(this.mobileNumber != 0){
     //   this.empData = this.empData.filter(res=>{
-    //     return res.mobileNumber.value
+    //     return res.mobileNumber.toString.name.match(this.mobileNumber.toString.name)
     //   })
     // }
 

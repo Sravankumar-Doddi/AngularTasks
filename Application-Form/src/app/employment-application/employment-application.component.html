@@ -1,9 +1,9 @@
 <p>employment-applicaton works!</p>
 <nav class="navbar">
     search by name:
-    <input type="text" class="form-control" name="email" placeholder="enter Email" 
-        [(ngModel)]="email"  (ngModelChange)="search()">
-    <!-- [(ngModel)]="empModel.mobileNumber" (ngModelChange)="search()" -->
+    <input type="text" class="form-control" name="email" placeholder="enter Email" [(ngModel)]="email"
+        [(ngModel)]="mobileNumber" (ngModelChange)="search()">
+
 </nav>
 
 <nav class="navbar navbar-light bg-primary">
@@ -68,15 +68,14 @@
                             <label for="firstName">First Name</label>
                             <input type="text" formControlName="firstName" class="form-control"
                                 placeholder="Please enter your first Name">
-                            <!-- pattern="[a-zA-Z0-9]" -->
 
                             <div *ngIf="formValue.controls.firstName.invalid && (formValue.controls.firstName.dirty || formValue.controls.firstName.touched)"
                                 class="error">
-                                <div *ngIf="formValue.controls.firstName.hasError('pattern')" class="text-danger">first
-                                    name contains only alphs numarics
+                                <div *ngIf="formValue.controls.firstName.hasError('pattern')" class="text-danger">
+                                    first-name allow only alpha numerics!!!
                                 </div>
                                 <div *ngIf="formValue.controls.firstName.hasError('required')" class="text-danger">
-                                    first-name is required
+                                    first-name is required!!!
                                 </div>
 
                             </div>
@@ -85,15 +84,14 @@
                             <label for="middleName">Middle Name</label>
                             <input type="text" formControlName="middleName" class="form-control"
                                 placeholder="Please enter your middle name">
-                            <!-- pattern="[a-zA-Z0-9]" -->
 
                             <div *ngIf="formValue.controls.middleName.invalid && (formValue.controls.middleName.dirty || formValue.controls.middleName.touched)"
                                 class="error">
                                 <div *ngIf="formValue.controls.middleName.hasError('pattern')" class="text-danger">
-                                    middle-name contains only alphs numarics
+                                    middle-name allow only alpha numerics!!!
                                 </div>
                                 <div *ngIf="formValue.controls.middleName.hasError('required')" class="text-danger">
-                                    middle-name is required
+                                    middle-name is required!!!
                                 </div>
 
                             </div>
@@ -103,15 +101,14 @@
                             <label for="lastName">Last Name</label>
                             <input type="text" formControlName="lastName" class="form-control"
                                 placeholder="Please enter your last Name">
-                            <!-- pattern="[a-zA-Z0-9]" -->
 
                             <div *ngIf="formValue.controls.lastName.invalid && (formValue.controls.lastName.dirty || formValue.controls.lastName.touched)"
                                 class="error">
                                 <div *ngIf="formValue.controls.lastName.hasError('pattern')" class="text-danger">
-                                    last-name contains only alphs numarics
+                                    last-name allow only alpha numerics!!!
                                 </div>
                                 <div *ngIf="formValue.controls.lastName.hasError('required')" class="text-danger">
-                                    last-name is required
+                                    last-name is required!!!
                                 </div>
 
                             </div>
@@ -121,17 +118,47 @@
                             <label for="number">Mobile Number</label>
                             <input type="number" formControlName="mobileNumber" class="form-control"
                                 placeholder="Please enter your mobile number" required>
-                            <!-- pattern="[6-9]{1}[0-9]{9}" -->
+
+                            <div *ngIf="formValue.controls.mobileNumber.invalid && (formValue.controls.mobileNumber.dirty || formValue.controls.mobileNumber.touched)"
+                                class="error">
+                                <div *ngIf="formValue.controls.mobileNumber.hasError('pattern')" class="text-danger">
+                                    plese Enter correct mobile number!!!
+                                </div>
+                                <div *ngIf="formValue.controls.mobileNumber.hasError('required')" class="text-danger">
+                                    mobile number is required!!!
+                                </div>
+
+                            </div>
+
                         </div>
                         <div class="form-group form-check">
                             <label for="email">Email</label>
                             <input type="email" formControlName="email" class="form-control"
                                 placeholder="Please Enter your mail">
+
+                            <div *ngIf="formValue.controls.email.invalid && (formValue.controls.email.dirty || formValue.controls.email.touched)"
+                                class="error">
+
+                                <div *ngIf="formValue.controls.email.hasError('required')" class="text-danger">
+                                    email address is required!!!
+                                </div>
+
+                            </div>
+
                         </div>
                         <div class="form-group form-check">
                             <label for="date">Date Of Birth</label>
                             <input type="date" formControlName="dateOfBirth" class="form-control">
-                            <!-- name="startDate"  value="2022-03-21" min="1982-03-21" max="2022-03-21" -->
+
+                            <div *ngIf="formValue.controls.dateOfBirth.invalid && (formValue.controls.dateOfBirth.dirty || formValue.controls.dateOfBirth.touched)"
+                                class="error">
+
+                                <div *ngIf="formValue.controls.dateOfBirth.hasError('required')" class="text-danger">
+                                    date of birth is required!!!
+                                </div>
+
+                            </div>
+
                         </div>
                         <label>
                             <input type="radio" value="Male" formControlName="gender">
@@ -142,9 +169,7 @@
                             <span>Female</span>
                         </label>
                     </form>
-                    <!-- <div>
-                            {{applicationForm.value | json}}
-                        </div> -->
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -157,5 +182,3 @@
         </div>
     </div>
 </div>
-
-<!-- <button type="button" (click) = "getEmployeeById(mobileNumber)">getEmployeeBYId</button> -->

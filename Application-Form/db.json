@@ -21,14 +21,24 @@
       "gender": "Male"
     },
     {
-      "id": 9,
-      "firstName": "Sravan",
-      "middleName": "kumar",
-      "lastName": "Doddi",
-      "mobileNumber": 919199887689,
-      "email": "Adn@gmail.com",
-      "dateOfBirth": "2022-03-02",
+      "id": 10,
+      "firstName": "Kranthi",
+      "middleName": "Chintu",
+      "lastName": "Alobo",
+      "mobileNumber": 918877665544,
+      "email": "xyz@gmail.com",
+      "dateOfBirth": "2022-03-11",
       "gender": "Male"
+    },
+    {
+      "id": 11,
+      "firstName": "Anu",
+      "middleName": "ioi",
+      "lastName": "ll",
+      "mobileNumber": 918899776600,
+      "email": "klm@gmail.com",
+      "dateOfBirth": "2022-03-03",
+      "gender": "Female"
     }
   ]
 }
