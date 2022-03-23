@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, } from '@angular/forms';
 import { EmployeeService } from '../shared/employee.service';
-import { Employee } from './employee';
+import { Employee } from '../model/Employee';
 
 
 @Component({
@@ -23,23 +23,25 @@ export class EmploymentApplicationComponent implements OnInit {
 
   formValue!: FormGroup;
   empModel: Employee = new Employee();
-  emp !:  Employee[] ;
-  empData !: any;
+  empData !: Employee[];
+  email !: String;
+  // empData !: [];
+  mobileNumber !: number;
   showAdd !: boolean;
   showUpdate !: boolean;
-  
+
 
   constructor(private formbuilder: FormBuilder, private api: EmployeeService) { }
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
-      firstName: ['',[ Validators.required,  Validators.pattern("^[a-zA-Z0-9]+$")]],
-      middleName: ['', [Validators.required,  Validators.pattern("^[a-zA-Z0-9]+$")]],
+      firstName: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9]+$")]],
+      middleName: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9]+$")]],
       lastName: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9]+$")]],
       mobileNumber: ['', [Validators.required, Validators.pattern("^(0|91)?[6-9]{1}[0-9]{9}$")]],
       email: ['', [Validators.email]],
       dateOfBirth: ['', [Validators.required]],
-      gender: ['',[Validators.required]]
+      gender: ['', [Validators.required]]
     })
     this.getEmployeeDetails();
   }
@@ -121,16 +123,22 @@ export class EmploymentApplicationComponent implements OnInit {
 
   }
 
-  // search() {
-  //   if (this.empModel.email == '') {
-  //     this.ngOnInit()
-  //   }
-  //   else{
-  //     this.emp = this.emp.filter(res=>{
-  //       return res.email.toLocaleLowerCase().match();
-  //     })
-  //   }
-  //  }
+  search() {
+    if (this.email == '' || this.mobileNumber == 0) {
+      this.ngOnInit()
+    }
+    // else if(this.mobileNumber != 0){
+    //   this.empData = this.empData.filter(res=>{
+    //     return res.mobileNumber.value
+    //   })
+    // }
+
+    else {
+      this.empData = this.empData.filter(res => {
+        return res.email.toLocaleLowerCase().match(this.email.toLocaleLowerCase());
+      })
+    }
+  }
 
 }
 
